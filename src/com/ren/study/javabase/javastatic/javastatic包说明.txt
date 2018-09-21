@@ -10,3 +10,6 @@ static 修饰代码块的时候，先是执行静态代码块中的 在执行普
 TODO static和单例模式
 TODO static修饰内部类
 TODO static和final结合修饰
+
+
+TODO 
