@@ -1,0 +1,65 @@
+static关键字用途
+
+static关键字可以作用于属性、方法、内部类等。
+static修饰的代表其是类的引用，而不是与类的实例引用，因此可以通过【类名.属性名】的方式调用。
+
+一：static属性
+	static修饰属性的时候，代表这个属性属于类的，JVM将变量加载到方法区中，而不是堆中。
+	静态变量只初始化一次，且被所有对象共享，即任何一个对象修改了static变量的值，其他对象也会发生变化。
+	public class PersonStaticParameter {
+	String name;
+	static int age;
+	
+	public String toString() {
+		return "name:"+name+" age:"+age;
+	}
+	
+	public static void main(String[] args) {
+		PersonStaticParameter p1 = new PersonStaticParameter();
+		p1.age=11;
+		p1.name="张三";
+		
+		PersonStaticParameter p2 = new PersonStaticParameter();
+		p2.age=12;
+		p2.name="李四";
+		
+		System.out.println(p1);
+		System.out.println(p2);
+		/** Output
+		 * name:张三 age:12
+		 * name:李四 age:12
+		 */
+		
+		PersonStaticParameter.age=123;
+		System.out.println(p1);
+		System.out.println(p2);
+		/** Output
+		 * name:张三 age:123
+		 * name:李四 age:123
+		 */
+		
+		}
+	}
+二：static方法
+	static修饰的方法不依赖任何对象，没有this之说，而非静态方法和参数是依赖对象调用的，由此static方法不能调用非静态方法和参数。
+三：static代码块
+	static修饰代码块，只会在类加载的时候执行一次。
+	static代码块可以在类的任意位置,按照先后顺序加载。
+四：static和单例简单例子
+	 简单理解单例就是任何时刻，一个类只有一个实例。
+ 	 确保一个类只有一个实例的话，就是外部不能通过随意通过new方式创建对象，因此私有化构造方法
+ 	 私有化构造方法后， 外部不能创建，只能内部创建了。static就解决了这个问题
+	public class Singleton {
+		/**
+		 * 私有的属性 只初始化一次（单线程下）
+		 * 私有的构造方法，
+		 * 公有的静态方法返回类实例
+		 */
+		private static Singleton singleton = new Singleton();
+		
+		private Singleton() {
+		}
+		public static Singleton getInstance() {
+			return singleton;
+		}
+	}
