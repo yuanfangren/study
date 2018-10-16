@@ -2,3 +2,6 @@
 项目包含代码和文档为学习过程中的学习代码、学习文档
 分包的形式，每个包为一个独立的学习内容
 某些公用的会放在util包下
+
+com.ren.study.javabase.javastatic 为java关键字基础部分 static关键字的学习
+com.ren.leetcode.algorithm leetcode上算法部分的代码实现
